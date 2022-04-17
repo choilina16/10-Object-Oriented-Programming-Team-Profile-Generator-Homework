@@ -1,0 +1,31 @@
+objective: 
+- node.js command-line app that takes in info about employees on a software engineering team
+- generate a HTML that displays summaries for each person
+- unit test for every part of your code
+- provide link to a walkthrough video AND add to the readme of the project 
+
+
+creiteria: 
+- should be using JEST for testing & INQUIRER for collecting input from users
+- prompted for my teach memebers and their information, then an html file is generated that displays a roster based on user input
+- when i click on an email, opens email thing
+- when i click on the github username, profile opens in a new tab
+- user is prompted to enter: 
+    - team manager's name
+    - employee ID
+    - email address
+    - office number
+- afterwards, user is presented with a menu with the option to add an engineer or an intern or to finish building my team
+- when selecting the engineer, user is prompted to enter:
+    - engineer's name
+    - employee ID
+    - email address
+    - github username 
+- taken back to menu
+- when selecting intern, user is prompted to enter:
+    - intern's name
+    - employee ID
+    - email address
+    - school 
+- taken back to menu
+- html is generated when finished 
