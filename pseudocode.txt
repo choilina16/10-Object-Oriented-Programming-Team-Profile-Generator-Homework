@@ -29,3 +29,8 @@ creiteria:
     - school 
 - taken back to menu
 - html is generated when finished 
+
+
+- generate html
+- generate css
+- generate content
