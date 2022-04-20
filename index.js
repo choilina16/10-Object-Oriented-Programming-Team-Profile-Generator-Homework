@@ -1,94 +1,149 @@
-// const inquirer = require('inqurier');
-// const fs = require('fs');
+// SHOUT OUT TO MY INSTRUCTOR JUNG. The office hours he had was a really big help in getting my to finish this homework lol thank you :) 
 
-// const generateHTML = (answers) =>
-//   `<!DOCTYPE html>
-// <html lang="en">
-// <head>
-//     <meta charset="UTF-8">
-//     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     <title>Team Builder</title>
+// calling in all my files & npms that I will need for this hw.
+const inquirer = require('inquirer');
+const fs = require('fs');
+const Employee = require('./Employee');
+const Manager = require('./Manager');
+const Engineer = require('./Engineer');
+const Intern = require('./Intern');
 
-//     <!--Import materialize.css-->
-//     <!-- USING MATERIALIZE FRAMEWORK!! -->
-//     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-//     <!-- custom css file -->
-//     <link rel="stylesheet" href="./css/style.css">
-// </head>
+// if user wants to go again this must be called
+// using Jung's office hours lesson as a reference
+const goAgain = () => {
+    inquirer
+        .prompt([
+            {
+                type: 'confirm',
+                name: 'goManagerAgain',
+                message: 'Do you want to add a new manager?'
+            }
+        ])
+        .then(confirm => {
+            if(confirm.goManagerAgain) {
+                init();
+            } else {
+                process.exit();
+            }
+        });
+}
 
-// <body>
+// the prompts the user will come across when making a Manager 
+const createManager = () => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'nameManager',
+                message: 'Enter the team manager name',
+            },
+            {
+                type: 'input',
+                name: 'idManager',
+                message: 'Enter the team manager employee ID',
+            },
+            {
+                type: 'input',
+                name: 'emailManager',
+                message: 'Enter the team manager email address',
+            },
+            {
+                type: 'input',
+                name: 'usernameManager',
+                message: 'Enter the team manager office number',
+            },
+        ])
+        .then(res => {
+            console.log(res);
+            const myManager = new Manager(
+                res.name, 
+                res.id, 
+                res.email, 
+                res.officeNumber
+            );
+            console.log(myManager);
+            // instantiate a new object and pass in the values from the user 
+            myManager.sayManagerValues();
 
-//     <!-- header/navbar -->
-//     <div class="navbar-fixed">
-//         <nav>
-//         <div class="nav-wrapper">
-//             <a href="#!" class="brand-logo">Team Builder</a>
-//         </div>
-//         </nav>
-//     </div>
+        });
+}
 
-//     <!-- Manager -->
-//     <div class="row">
-//         <div class="col s12 m6">
-//         <div class="card blue-grey darken-1">
-//             <div class="card-content white-text">
-//             <span class="card-title">Manager</span>
-//             <ul>
-//                 <li>Name</li>
-//                 <li>Employee ID</li>
-//                 <li>Email</li>
-//                 <li>Office Number</li>
-//             </ul>
-//             </div>
-//         </div>
-//         </div>
-//     </div>
+// the prompts the user will come across when making an Engineer 
+const createEngineer = () => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'nameEngineer',
+                message: 'Enter the engineer name',
+            },
+            {
+                type: 'input',
+                name: 'idEngineer',
+                message: 'Enter the engineer employee ID',
+            },
+            {
+                type: 'input',
+                name: 'emailEngineer',
+                message: 'Enter the engineer email address',
+            },
+            {
+                type: 'input',
+                name: 'githubEngineer',
+                message: 'Enter the engineer github username',
+            },
+        ])
+        .then(res => {
+            console.log(res);
+            const myEngineer= new Engineer(
+                res.name, 
+                res.id, 
+                res.email, 
+                res.github
+            );
+            console.log(myEngineer);
+            // instantiate a new object and pass in the values from the user 
+            myEngineer.sayEngineerValues();
 
-//     <!-- Engineer -->
-//     <div class="row">
-//     <div class="col s12 m6">
-//         <div class="card blue-grey darken-1">
-//         <div class="card-content white-text">
-//             <span class="card-title">Engineer</span>
-//             <ul>
-//             <li>Name</li>
-//             <li>Employee ID</li>
-//             <li>Email</li>
-//             <li>Github Username</li>
-//             </ul>
-//         </div>
-//         </div>
-//     </div>
-//     </div>
+        });
+}
 
+// the prompts the user will come across when making an Intern 
+const createIntern = () => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'nameIntern',
+                message: 'Enter the intern name',
+            },
+            {
+                type: 'input',
+                name: 'idIntern',
+                message: 'Enter the intern employee ID',
+            },
+            {
+                type: 'input',
+                name: 'emailIntern',
+                message: 'Enter the intern email address',
+            },
+            {
+                type: 'input',
+                name: 'schoolIntern',
+                message: 'Enter the intern school',
+            },
+        ])
+        .then(res => {
+            console.log(res);
+            const myIntern = new Intern(
+                res.name, 
+                res.id, 
+                res.email, 
+                res.school
+            );
+            console.log(myIntern);
+            // instantiate a new object and pass in the values from the user 
+            myIntern.sayInternValues();
 
-//     <!-- Intern -->
-//     <div class="row">
-//         <div class="col s12 m6">
-//         <div class="card blue-grey darken-1">
-//             <div class="card-content white-text">
-//             <span class="card-title">Intern</span>
-//             <ul>
-//                 <li>Name</li>
-//                 <li>Employee ID</li>
-//                 <li>Email</li>
-//                 <li>School</li>
-//             </ul>
-//             </div>
-//         </div>
-//         </div>
-//     </div>
-    
-// </body>
-// </html>`;
-
-// .then((answers) => {
-//     const htmlPageContent = generateHTML(answers);
-
-//     // this is actually writing the file. if errors then it will tell you so in console log
-//     fs.writeFile('index.html', htmlPageContent, (err) =>
-//       err ? console.log(err) : console.log('Successfully created index.html!')
-//     );
-//   });
-
+        });
+}
