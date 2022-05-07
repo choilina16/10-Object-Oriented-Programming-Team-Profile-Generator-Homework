@@ -1,43 +1,32 @@
+// lib = library
+// activity 21 reference
+
 class Employee {
-    // take in properties of the employee
-    // constructor is a function
-    constructor(name, id, email) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
+  // take in properties of the employee
+  // constructor is a function - defines the class
+  constructor(name, id, email) {
+    this.name = name;
+    this.id = id;
+    this.email = email;
+  }
 
-    }
+  // functions so that these can be called elsewhere
+  getName() {
+    return this.name;
+  }
 
-    getName() {
-        return this.name;
-    }
+  getId() {
+    return this.id;
+  }
 
-    getId() {
-        return this.id;
-    }
+  getEmail() {
+    return this.email;
+  }
 
-    getEmail() {
-        return this.email;
-    }
+  getRole() {
+    return 'Employee';
+  }
 }
-    module.exports = Employee;
 
-    // sayEmployeeValues = function() {
-    //     console.log(
-    //         `Your employee's properties are: \n
-    //         ${this.name} \n
-    //         ${this.id} \n
-    //         ${this.email} \n
-    //         ${this.username} \n`
-    //     );
-    // };
-
-    // createEmployee = function() {
-    //     console.log('The employee has been created');
-    // };
-
-    // class getRole extends Employee {
-    //     return Employee;
-    // }
-
-
+// exporting out the file
+module.exports = Employee;
